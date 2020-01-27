@@ -1,0 +1,28 @@
+{% load static %}
+<body>
+  {%include 'backend/adminheader.html'%}
+  {% block content %}
+  <section class="main_page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="button">
+            <a href="{% url 'userDetail' %}">View User Detail</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="button">
+            <a href="{% url 'addevent' %}">Add Event</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <a href="{% url 'addclass' %}">Add Classes</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+</body>
+{%include 'footer.html'%}

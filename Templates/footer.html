@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{%static 'lib/CSS/footer.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'lib/font-awesome/css/font-awesome.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'lib/font-awesome/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'lib/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{%static 'lib/bootstrap/css/bootstrap.css' %}">
+
+</head>
+<body>
+<!--==========================
+Footer
+============================-->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+				<div class="col footer-info">
+					<h4>Social Links</h4>
+					<p>There are shortcuts to happiness and that is by dancing. Dance first. Think later. It’s the natural order. Don’t wish for it, work for it. Practice like you’ve never won, perform like you’ve never lost.</p>
+					<div class="social-links">
+						<a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="https://twitter.com/" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="https://www.instagram.com/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+				<div class="col footer-links">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Home</a></li>
+						<li><i class="ion-ios-arrow-right"></i> <a href="{% url 'aboutus' %}">About us</a></li>
+						<li><i class="ion-ios-arrow-right"></i> <a href="{% url 'where' %}">Where</a></li>
+						<li><i class="ion-ios-arrow-right"></i> <a href="{% url 'login' %}">Login</a></li>
+						<li><i class="ion-ios-arrow-right"></i> <a href="{% url 'signup' %}">SignUp</a></li>
+					</ul>
+				</div>
+				<div class="col footer-contact">
+					<h4>Contact Us</h4>
+					<p> Agnishal
+						<br> Lalitpur, Nepal<br>
+						<strong>Phone:</strong> <a href="tel:+977-01-5546350">+977-01-5546350</a> <br> Mobile: <a href="tel:+977-9860484239">+977-9860484239</a><br>
+						<strong>Email:</strong><a href="mailto:bigemmaharjan@gmail.com"> bigemmaharjan@gmail.com</a><br>
+					</p>
+				</div>
+				<div class="col-lg-3 col-md-6 footer-newsletter footer-links">
+					<h4>Classes</h4>
+					<ul>
+						<li><i class="ion-ios-arrow-right"></i>Tap Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>Modern Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>Lyrical Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>Jazz Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>HipHop Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>Ballet Dance</li>
+						<li><i class="ion-ios-arrow-right"></i>Contemporary Dance</li>
+					</ul>           
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="copyright">
+			&copy; Copyright 2019 <strong>Agni Dance Club</strong>. All Rights Reserved
+		</div>
+	</div>
+</footer>
+</body>
+<script type="text/javascript" src="{% static 'lib/bootstrap/js/bootstrap.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+<script src="{%static 'lib/jquery/jquery.min.js' %}"></script>
+
+{% block content %}
+
+{% endblock %}
+
+</html>
