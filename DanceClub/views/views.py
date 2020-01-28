@@ -1,7 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
+from django.http import HttpResponse,JsonResponse
 from DanceClub.models.modelsignup import User
 from DanceClub.forms import Signupform
+from DanceClub.authentication import Authenticate
 
 def indexview(request):
 	users=User.objects.all()
@@ -23,25 +25,28 @@ def signupview(request):
 	return render(request, 'signup.html',{'form':form})
 
 def loginview(request):
-	# if request.method == 'POST':
-	# 	form=Loginform(request.POST)
-
 	return render(request, 'login.html')
 
-# def entry(request):
-	
+def entry(request):
+	request.session['username']=request.POST['username']
+	request.session['password']=request.POST['password']
+	return redirect('/aboutus')
 
+@Authenticate.valid_user
 def userdashboardview(request):
 	return render(request, 'frontend/userdashboard.html')
 
+@Authenticate.valid_user
 def userprofileview(request):
 	users=User.objects.all()
 	return render(request, 'frontend/userprofile.html',{'users':users})
 
+@Authenticate.valid_user
 def adminprofileview(request):
 	users=User.objects.all()
 	return render(request, 'backend/adminprofile.html',{'users':users})
 
+@Authenticate.valid_user
 def admindashboardview(request):
 	return render(request, 'backend/admindashboard.html')
 
@@ -61,11 +66,15 @@ def delete(request,id):
 	user.delete()
 	return redirect('adminprofile')
 
+@Authenticate.valid_user
 def userdetailview(request):
-	return render(request, 'backend/userDetail.html')
+	users=User.objects.all()
+	return render(request, 'backend/userDetail.html',{'users':users})
 
+@Authenticate.valid_user
 def addclass(request):
 	return render(request, 'backend/addclass.html')
 
+@Authenticate.valid_user
 def addevent(request):
 	return render(request, 'backend/addevent.html')

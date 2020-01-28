@@ -1,0 +1,54 @@
+{% load static %}
+<body>
+	{% include 'backend/adminheader.html' %}
+	{% block content %}
+
+	<section class="image">
+		<div class="container">
+			<div class="well">
+				<div class="thumbnail">
+					<a href="{% url 'admindashboard' %}" class="btn btn-primary">Back</a>
+				</div>
+				<h3>User Detail</h3>
+				<table class="table table-responsive table-striped table-bordered">
+						<tr>
+							<th>ID</th>
+							<th>Full Name</th>
+							<th>Gaurdian Name</th>
+							<th>DOB</th>
+							<th>Classes</th>
+							<th>Types</th>
+							<th>Address</th>
+							<th>Email</th>
+							<th>Phone Number</th>
+							<th>Username</th>
+							<th>Password</th>
+							<th>Action</th>
+						</tr>
+
+						+
+
+					{% for user in users %}
+						<tr>
+							<td>{{user.user_id}}</td>
+							<td>{{user.full_name}}</td>
+							<td>{{user.gaurdian_name}}</td>
+							<td>{{user.date_of_birth}}</td>
+							<td>{{user.classes}}</td>
+							<td>{{user.types}}</td>
+							<td>{{user.address}}</td>
+							<td>{{user.email}}</td>
+							<td>{{user.phone_no}}</td>
+							<td>{{user.username}}</td>
+							<td>{{user.password}}</td>
+							<td><a href="/edit/{{user.user_id}}">Edit</a>|<a href="/delete/{{user.user_id}}">Delete</a></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+	</section>
+
+	{% endblock %}
+</body>
+{% include 'footer.html' %}
