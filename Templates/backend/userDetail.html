@@ -26,7 +26,10 @@
 							<th>Action</th>
 						</tr>
 
-						+
+						{% include 'database.py' %}
+						mycursor.execute("SELECT * from user")
+
+						myresult = mycursor.fetchall()
 
 					{% for user in users %}
 						<tr>

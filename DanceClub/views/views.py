@@ -30,7 +30,7 @@ def loginview(request):
 def entry(request):
 	request.session['username']=request.POST['username']
 	request.session['password']=request.POST['password']
-	return redirect('/aboutus')
+	return redirect('/admindashboard')
 
 @Authenticate.valid_user
 def userdashboardview(request):
@@ -61,7 +61,6 @@ def update(request,id):
 	return redirect('adminprofile')
 
 def delete(request,id):
-	# user=User.objects.get(user_id=id).image.delete()
 	user=User.objects.get(user_id=id)
 	user.delete()
 	return redirect('adminprofile')
