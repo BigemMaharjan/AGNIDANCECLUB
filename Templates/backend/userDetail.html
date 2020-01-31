@@ -10,6 +10,7 @@
 					<a href="{% url 'admindashboard' %}" class="btn btn-primary">Back</a>
 				</div>
 				<h3>User Detail</h3>
+				<input type="text" id="search" class="form-control col-md-4" placeholder="Search by username...."/> <br>
 				<table class="table table-responsive table-striped table-bordered">
 						<tr>
 							<th>ID</th>
@@ -25,11 +26,6 @@
 							<th>Password</th>
 							<th>Action</th>
 						</tr>
-
-						{% include 'database.py' %}
-						mycursor.execute("SELECT * from user")
-
-						myresult = mycursor.fetchall()
 
 					{% for user in users %}
 						<tr>
@@ -51,6 +47,45 @@
 			</div>
 		</div>
 	</section>
+
+	<script>
+		$(document).ready(()=>{
+			$("#search").keyup(()=>{
+				$.ajax({
+					data:{search:$("#search").val()},
+					url:'/search',
+					method:'GET',
+					success:function(data){
+						console.log(data);
+						$("tr").not("tr:first").remove();
+						var html="";
+						for(d of data) {
+							html+="<tr>";
+								html+="<td>"+d.user_id+"</td>";
+								html+="<td>"+d.full_name+"</td>";
+								html+="<td>"+d.gaurdian_name+"</td>";
+								html+="<td>"+d.date_of_birth+"</td>";
+								html+="<td>"+d.classes+"</td>";
+								html+="<td>"+d.types+"</td>";
+								html+="<td>"+d.address+"</td>";
+								html+="<td>"+d.email+"</td>";
+								html+="<td>"+d.phone_no+"</td>";
+								html+="<td>"+d.username+"</td>";
+								html+="<td>"+d.password+"</td>";
+								html+="<td><a href='/edit/"+d.user_id+"'>Edit</a> | <a href='/delete/"+d.user_id+"'>Delete</a></td>";
+							html+="</tr>"
+
+							$("table").append(html);
+						}
+					},error:function(error){
+						console.log(error)
+					},complete:function(){
+						console.log('complete')
+					}
+				})
+			})
+		})
+	</script>
 
 	{% endblock %}
 </body>

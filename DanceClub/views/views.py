@@ -5,6 +5,7 @@ from DanceClub.models.modelsignup import User
 from DanceClub.forms import Signupform
 from DanceClub.authentication import Authenticate
 
+
 def indexview(request):
 	users=User.objects.all()
 	return render(request, 'index.html',{'users':users})
@@ -30,7 +31,11 @@ def loginview(request):
 def entry(request):
 	request.session['username']=request.POST['username']
 	request.session['password']=request.POST['password']
-	return redirect('/admindashboard')
+	return redirect('/userprofile')
+
+def search(request):
+	users=User.objects.filter(username__contains=request.GET['search']).values()
+	return JsonResponse(list(users),safe=False)
 
 @Authenticate.valid_user
 def userdashboardview(request):
