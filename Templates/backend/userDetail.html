@@ -48,6 +48,13 @@
 		</div>
 	</section>
 
+	<form method="post" action="/userDetail/">
+		{% csrf_token %}
+		<button type="submit" name="prev" value="prev" id="prev">prev</button>
+		<input style="width:40px;" type="number" value="{{page}}" name="page" id="page">
+		<button type="submit" name="next" value="next" id="next">next</button>		
+	</form>
+
 	<script>
 		$(document).ready(()=>{
 			$("#search").keyup(()=>{
