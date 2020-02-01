@@ -3,11 +3,37 @@
 	{% include 'header.html' %}
 	{% block content %}
 	<section class="container">
+	 <div class="section-header">
+		<h3>GET IN TOUCH WITH US</h3>
+	</div>
+ <br>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="map-design">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d56534.773983743304!2d85.29071143335273!3d27.67330669816463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x39eb19c50a10a54b%3A0xddf10377d457dd93!2zUEFUQU4gTVVTRVVNIENBRkUsIOCkquCkvuCkn-CkqCDgpKbgpLDgpLXgpL7gpLAg4KS44KWN4oCN4KSV4KWN4oCN4KS14KS-4KSv4KSwLCDgpK3gpL_gpKjgpY3gpKbgpY3gpK_gpYsg4KSV4KWN4KS1IC0g4KS44KWM4KSXOiDgpLLgpIEsIFBhdGFuIDQ0NjAw!3m2!1d27.6733111!2d85.3257311!5e0!3m2!1sen!2snp!4v1547549637518" width="500" height="450" frameborder="6" style="border:4px" allowfullscreen></iframe>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.445904386875!2d85.31918186453754!3d27.67261003362561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19cfacbeef2d%3A0x6064c089572a3d43!2sAgnishal%2C%20Lalitpur%2044600!5e0!3m2!1sen!2snp!4v1580548028058!5m2!1sen!2snp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 				</div>
+			</div>
+			<div class="col-md-6">	
+					<form class="form-signin" method="POST">
+						{% csrf_token %}
+						<div class="form-group">
+						<label>Full Name</label>
+						<input type="text" class="form-control" name="full_name" placeholder="Full Name" required="" autofocus="" />
+						</div>
+						<div class="form-group">
+						<label>Email</label>
+						<input type="text" class="form-control" name="email" placeholder="Email" required=""/>
+						</div>
+						<div class="form-group">
+						<label>Phone Number</label>
+						<input type="number" class="form-control" name="phone_no" placeholder="Phone Number" required=""/>
+						</div>
+						<div class="form-group">
+						<label>Message To Us</label>
+						<textarea name="feedback" cols="40" rows="5" class="form-control" placeholder="Please send us your feedback" value></textarea>
+						</div>
+						<button class="btn btn-danger btpro" type="submit" name="button">Send Message</button>
+					</form>
 			</div>
 		</div>
 	</section>
@@ -15,14 +41,12 @@
 
 		<section id="contact" class="section-bg wow fadeInUp">
 			<div class="container">
-
 				<div class="section-header">
 					<h3>Contact Us</h3>
 					<p>Leave us your brief details and someone from our team will get in touch with you as soon as possible!</p>
 				</div>
 
 				<div class="row contact-info">
-
 					<div class="col-md-4">
 						<div class="contact-address">
 							<i class="ion-ios-location-outline"></i>
