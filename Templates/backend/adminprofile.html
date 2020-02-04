@@ -2,6 +2,7 @@
 <body>
 	{%include 'backend/adminheader.html'%}
 	{%block content%}
+	
 	{% for user in users %}
 <a href="/edit/{{user.user_id}}" class="btn btn-primary">Edit Profile</a> <a href="/delete/{{user.user_id}}" class="btn btn-primary">Delete Profile</a>
 	{% endfor %}

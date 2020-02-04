@@ -83,7 +83,6 @@ def userdetailview(request):
 		users=User.objects.raw("select *from user limit 3 offset %s",[offset])
 	else:
 		users=User.objects.raw("select *from user limit 3 offset 0")
-	# users = User.objects.all()
 	return render(request, 'backend/userDetail.html',{'users':users, 'page':page})
 
 @Authenticate.valid_user
@@ -93,3 +92,8 @@ def addclass(request):
 @Authenticate.valid_user
 def addevent(request):
 	return render(request, 'backend/addevent.html')
+
+def logout(request):
+	del request.session['username']
+	del request.session['password']
+	return redirect('/home')

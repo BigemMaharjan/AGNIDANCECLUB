@@ -35,5 +35,6 @@ urlpatterns = [
     path('delete/<int:id>', views.delete, name='delete'),
     path('userDetail/', views.userdetailview, name='userDetail'),
     path('addclass/', views.addclass, name='addclass'),
-    path('addevent/', views.addevent, name='addevent')
+    path('addevent/', views.addevent, name='addevent'),
+    path('logout/', views.logout, name='logout')
 ]
