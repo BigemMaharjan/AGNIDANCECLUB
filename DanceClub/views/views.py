@@ -4,10 +4,6 @@ from django.http import HttpResponse,JsonResponse
 from DanceClub.models.modelsignup import User
 from DanceClub.forms import Signupform
 from DanceClub.authentication import Authenticate
-import mysql.connector
-from mysql.connector import Error
-
-
 
 def indexview(request):
 	users=User.objects.all()
@@ -81,15 +77,14 @@ def userdetailview(request):
 		if "next" in request.POST:
 			page=(int(request.POST['page'])+1)
 		elif "prev" in request.POST:
-			pahe=(int(request.POST['page'])-1)
+			page=(int(request.POST['page'])-1)
 		tempoffset=page-1
 		offset=tempoffset*page
-		users=User.objects.raw("select * from user limit 3 offset %s",[offset])
+		users=User.objects.raw("select *from user limit 3 offset %s",[offset])
 	else:
-		users=User.objects.raw("select * from user limit 3 offset 0")
-
-	users=User.objects.all()
-	return render(request, 'backend/userDetail.html',{'users':users})
+		users=User.objects.raw("select *from user limit 3 offset 0")
+	# users = User.objects.all()
+	return render(request, 'backend/userDetail.html',{'users':users, 'page':page})
 
 @Authenticate.valid_user
 def addclass(request):
