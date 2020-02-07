@@ -3,11 +3,12 @@
 	{%include 'backend/adminheader.html'%}
 	{%block content%}
 	<h2>Profile</h2>
-
+	
 {% for user in users%}
 <a href="/edit/{{user.user_id}}" class="btn btn-primary">Edit Profile</a>
 {% endfor %}
-	
+
+
 <div class="profile-design">
 	<div class="row">
 		<div class="col-md-4">
@@ -148,5 +149,6 @@
 	{%endblock%}
 
 </div>
+
 </body>
 {%include 'footer.html'%}

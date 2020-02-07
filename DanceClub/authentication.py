@@ -11,5 +11,5 @@ class Authenticate:
 				return function (request)
 			except:
 				messages.warning(request,"Invalid password or username")
-				return redirect('/login')
+				return redirect('login')
 		return wrap

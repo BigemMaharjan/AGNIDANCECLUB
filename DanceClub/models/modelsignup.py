@@ -12,6 +12,5 @@ class User(models.Model):
 	phone_no=models.CharField(max_length=100)
 	username=models.CharField(max_length=50)
 	password=models.CharField(max_length=100)
-	# image=models.ImageField(default="")
 	class Meta:
 		db_table="user"

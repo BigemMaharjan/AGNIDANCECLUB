@@ -17,7 +17,7 @@ def whereview(request):
 
 def signupview(request):	
 	if request.method == 'POST':
-		form=Signupform(request.POST,request.FILES)
+		form=Signupform(request.POST)
 		form.save()
 		return redirect('login')
 
@@ -42,7 +42,7 @@ def userdashboardview(request):
 
 @Authenticate.valid_user
 def userprofileview(request):
-	users=User.objects.all()
+	users=User.objects.raw("SELECT * FROM user LIMIT 1")
 	return render(request, 'frontend/userprofile.html',{'users':users})
 
 @Authenticate.valid_user
@@ -58,11 +58,21 @@ def edit(request,id):
 	user=User.objects.get(user_id=id)
 	return render(request, 'edit.html', {'user': user})
 
+def backendEdit(request,id):
+	user=User.objects.get(user_id=id)
+	return render(request, 'backendEdit.html', {'user': user})
+
+def backendUpdate(request,id):
+	user=User.objects.get(user_id=id)
+	form=Signupform(request.POST, instance=user)
+	form.save()
+	return redirect('adminprofile')
+	
 def update(request,id):
 	user=User.objects.get(user_id=id)
 	form=Signupform(request.POST,instance=user)
 	form.save()
-	return redirect('adminprofile')
+	return redirect('userprofile')
 
 def delete(request,id):
 	user=User.objects.get(user_id=id)
@@ -80,10 +90,11 @@ def userdetailview(request):
 			page=(int(request.POST['page'])-1)
 		tempoffset=page-1
 		offset=tempoffset*page
-		users=User.objects.raw("select *from user limit 3 offset %s",[offset])
+		users=User.objects.raw("SELECT * FROM user LIMIT 3 offset %s",[offset])
 	else:
-		users=User.objects.raw("select *from user limit 3 offset 0")
+		users=User.objects.raw("SELECT  * FROM user LIMIT 3 offset 0")
 	return render(request, 'backend/userDetail.html',{'users':users, 'page':page})
+
 
 @Authenticate.valid_user
 def addclass(request):
@@ -96,4 +107,6 @@ def addevent(request):
 def logout(request):
 	del request.session['username']
 	del request.session['password']
-	return redirect('/home')
+	return redirect('login')
+
+

@@ -34,7 +34,7 @@
 							<td>{{user.full_name}}</td>
 							<td>{{user.gaurdian_name}}</td>
 							<td>{{user.date_of_birth}}</td>
-							<td>${date.getFullYear()}/${date.getMonth()}/${date.getDay()}</td>
+							<td></td>
 							<td>{{user.classes}}</td>
 							<td>{{user.types}}</td>
 							<td>{{user.address}}</td>
@@ -67,8 +67,9 @@
 					success:function(data){
 						console.log(data);
 						$("tr").not("tr:first").remove();
-						var html="";
+						
 						for(d of data) {
+							var html="";
 							html+="<tr>";
 								html+="<td>"+d.user_id+"</td>";
 								html+="<td>"+d.full_name+"</td>";
