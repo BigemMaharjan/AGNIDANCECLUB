@@ -42,7 +42,7 @@ def userdashboardview(request):
 
 @Authenticate.valid_user
 def userprofileview(request):
-	users=User.objects.raw("SELECT * FROM user LIMIT 1")
+	users=User.objects.raw("SELECT * FROM user WHERE user_id=id")
 	return render(request, 'frontend/userprofile.html',{'users':users})
 
 @Authenticate.valid_user
