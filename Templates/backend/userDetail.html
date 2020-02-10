@@ -18,8 +18,7 @@
 							<th>Gaurdian Name</th>
 							<th>DOB</th>
 							<th>Age</th>
-							<th>Classes</th>
-							<th>Types</th>
+							<th>Gender</th>
 							<th>Address</th>
 							<th>Email</th>
 							<th>Phone Number</th>
@@ -35,14 +34,13 @@
 							<td>{{user.gaurdian_name}}</td>
 							<td>{{user.date_of_birth}}</td>
 							<td></td>
-							<td>{{user.classes}}</td>
-							<td>{{user.types}}</td>
+							<td>{{user.gender}}</td>
 							<td>{{user.address}}</td>
 							<td>{{user.email}}</td>
 							<td>{{user.phone_no}}</td>
 							<td>{{user.username}}</td>
 							<td>{{user.password}}</td>
-							<td><a href="/edit/{{user.user_id}}">Edit</a>|<a href="/delete/{{user.user_id}}">Delete</a></td>
+							<td><a href="/adminEdit/{{admin.admin_id}}">Edit</a>|<a href="/adminDelete/{{admin.admin_id}}">Delete</a></td>
 						</tr>
 					{% endfor %}
 				</table>
@@ -75,8 +73,8 @@
 								html+="<td>"+d.full_name+"</td>";
 								html+="<td>"+d.gaurdian_name+"</td>";
 								html+="<td>"+d.date_of_birth+"</td>";
-								html+="<td>"+d.classes+"</td>";
-								html+="<td>"+d.types+"</td>";
+								// html+="<td>"+d.
+								html+="<td>"+d.gender+"</td>";
 								html+="<td>"+d.address+"</td>";
 								html+="<td>"+d.email+"</td>";
 								html+="<td>"+d.phone_no+"</td>";
@@ -99,4 +97,4 @@
 
 	{% endblock %}
 </body>
-{% include 'footer.html' %}
+{% include 'backend/adminfooter.html' %}

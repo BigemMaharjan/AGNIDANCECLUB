@@ -21,7 +21,7 @@
   <link href="{%static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="{%static 'lib/CSS/style.css' %}" rel="stylesheet">
+  <!-- <link href="{%static 'lib/CSS/style.css' %}" rel="stylesheet"> -->
   <link href="{%static 'lib/CSS/custom.css' %}" rel="stylesheet">
   <link href="{%static 'lib/CSS/frontend.css' %}" rel="stylesheet">
   <link href="{%static 'lib/CSS/signup_login.css' %}" rel="stylesheet">
@@ -29,27 +29,25 @@
 </head>
 <body>
 
-  <header id="header">
-    <div class="container-fluid bg-black text-right padding-60">
-        <a href="tel:+977-01-5546350">+977-01-5546350</a> | <a href="tel:+977-98604848239">+977-9860484239</a> | <a href="mailto:bigemmaharjan@gmail.com">bigemmaharjan@gmail.com</a>
-        </div>
-          <div class="container-fluid">
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="mainNav">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
       
             <div id="logo" class="pull-left">
                 <a href="{% url 'home' %}" class="scrollto"><img src="{%static 'lib/Images/logo.jpg'%}" alt="logo" width="70px" height="55px"></a>
             </div>
       
-            <nav id="nav-menu-container">
-              <ul class="nav-menu">
-                <li ><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'aboutus' %}">About Us</a></li>
-                <li><a href="{% url 'where' %}">Where</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                
+            <nav class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'aboutus' %}">About Us</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'where' %}">Where</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'adminlogin' %}">Admin</a></li>
               </ul>
             </nav><!-- #nav-menu-container -->
-          </div>
         </header>
 
     </body>
@@ -78,3 +76,4 @@
 
 {% endblock %}
 </html>
+

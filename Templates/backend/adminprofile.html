@@ -2,149 +2,83 @@
 <body>
 	{%include 'backend/adminheader.html'%}
 	{%block content%}
+	<h2>Profile</h2>
 	
-	{% for user in users %}
-<a href="/edit/{{user.user_id}}" class="btn btn-primary">Edit Profile</a> <a href="/delete/{{user.user_id}}" class="btn btn-primary">Delete Profile</a>
-	{% endfor %}
-<div class="profile-design">
-	<div class="row">
-		<div class="col-md-4">
-			<h6>ID</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.user_id}}</p>
-		</div>
-	</div>
-	</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Full Name</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.full_name}}</p>
-		</div>
-	</div>
-	</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Gaurdian Name</h6>
-		</div>
-
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.gaurdian_name}}</p>
-		</div>
+	<a href="/adminEdit/{{admin.admin_id}}" class="btn btn-primary">Edit Profile</a> <a href="/admindelete/{{admin.admin_id}}" class="btn btn-primary">Delete Profile</a>
+	
+	<div class="profile-design">
+		<div class="row">
+			<div class="col-md-4">
+				<h6>ID</h6>
 			</div>
-	</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>DOB</h6>
+
+			<div class="col-md-4">
+				<div class="profile-date">
+					<p>{{admin.admin_id}}</p>
+				</div>
+			</div>
 		</div>
 
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.date_of_birth}}</p>
-		</div>
-	</div>
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Classes</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">	
-			<p>{{user.classes}}</p>
-		</div>
-	</div>
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Types</h6>
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Name</h6>
+			</div>
+
+			<div class="col-md-4">
+				<div class="profile-date">
+					<p>{{admin.name}}</p>
+				</div>
+			</div>
 		</div>
 
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.types}}</p>
-		</div>
-	</div>
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Address</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.address}}</p>
-		</div>
-	</div>
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Email</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">		
-			<p>{{user.email}}</p>
-		</div>
-	</div>
-		</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Phone Number</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.phone_no}}</p>
-		</div>
-	</div>
-	</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Username</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.username}}</p>
-		</div>
-	</div>
-	</div>
-	{% endfor %}
-	<div class="row">
-		<div class="col-md-4">
-			<h6>Password</h6>
-		</div>
-	{% for user in users %}
-	<div class="col-md-4">
-		<div class="profile-date">
-			<p>{{user.password}}</p>
-		</div>
-	</div>
-	</div>
-	{% endfor %}
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Email</h6>
+			</div>
 
-	{%endblock%}
+			<div class="col-md-4">
+				<div class="profile-date">		
+					<p>{{admin.email}}</p>
+				</div>
+			</div>
+		</div>
 
-</div>
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Password</h6>
+			</div>
+
+			<div class="col-md-4">
+				<div class="profile-date">
+					<p>{{admin.password}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Gender</h6>
+			</div>
+
+			<div class="col-md-4">
+				<div class="profile-date">
+					<p>{{admin.gender}}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h6>Image</h6>
+			</div>
+
+			<div class="col-md-4">
+				<div class="profile-date">
+					<p><img width="40" src="{%static '/lib/Images/'%}{{admin.image}}"/></p>
+				</div>
+			</div>
+		</div>
+	</div>
+			{%endblock%}
 </body>
-{%include 'footer.html'%}
+{%include 'backend/adminfooter.html'%}

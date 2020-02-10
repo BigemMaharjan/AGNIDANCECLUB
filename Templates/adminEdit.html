@@ -1,0 +1,14 @@
+{% include 'backend/adminheader' %}
+<form method="post" action="/adminUpdate/{{admin.admin_id}}" enctype="multipart/form-data">
+	{% csrf_token %}
+	<input type="text" value="{{admin.name}}" name="name">
+	<input type="text" value="{{admin.email}}" name="email">
+	<input type="text" value="{{admin.password}}" name="password">
+	<input type="dropdown" value="{{admin.gender}}" name="gender">
+{% load static %}
+	<img width="100" src="{%static '/lib/Images/'%}{{admin.image}}"/>
+	<input type="file" name="image">
+	<button type="submit">Update</button>
+</form>
+
+{% include 'backed/adminfooter' %}

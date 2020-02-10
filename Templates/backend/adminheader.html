@@ -16,30 +16,37 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="mainNav">
-		<a class="navbar-brand js-scroll-trigger" href="{% url 'admindashboard' %}">Agni Dance Club</a>
 		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+
+		<div id="logo" class="pull-left">
+                <a href="{% url 'admindashboard' %}" class="scrollto"><img src="{%static 'lib/Images/logo.jpg'%}" alt="logo" width="70px" height="55px"></a>
+        </div>
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="{% url 'admindashboard' %}">
-						{% if request.session.username %}
-						<p>{{request.session.username}}</p>
-						{% endif %}</a>
+						<!-- {% if request.session.email %}
+						<p>{{request.session.name}}</p>
+						
+						<a href="/profile/{{request.session.username}}"></a>
+						{% endif %} -->
+						name
+					</a>
+						
 				</li>
 				<li class="nav-item">
 					<a class="nav-link js-scroll-trigger" href="{% url 'adminprofile' %}">Profile</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Logout</a>
+					<a class="nav-link js-scroll-trigger" href="{% url 'adminlogout' %}">Logout</a>
 				</li>
 			</ul>	
 		</div>
 	</nav>
 </body>
-<!-- <script type="text/javascript" src="{% static 'lib/CSS/index.js'%}"></script> -->
 <script type="text/javascript" src="{% static 'lib/bootstrap/js/bootstrap.min.js'%}"></script>
 <script src="{%static 'lib/jquery/jquery.min.js' %}"></script>
 {% block content %}

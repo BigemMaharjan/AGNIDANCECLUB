@@ -1,5 +1,6 @@
 from django.shortcuts import redirect
-from DanceClub.models.modelsignup import User
+from DanceClub.models.createmodel import User
+from DanceClub.models.createmodel import Admin
 from django.contrib import messages
 from django.db.models import Q
 
@@ -12,4 +13,15 @@ class Authenticate:
 			except:
 				messages.warning(request,"Invalid password or username")
 				return redirect('login')
+		return wrap
+
+class Lock:
+	def valid_admin(function):
+		def wrap(request):
+			try:
+				Admin.objects.get(Q(email=request.session['email']) & Q(password=request.session['password']))
+				return function (request)
+			except:
+				messages.warning(request,"Invalid password or email")
+				return redirect('adminlogin')
 		return wrap

@@ -4,7 +4,7 @@
 	{% block content %}
 
 	<div class="wrapper">
-		<form class="form-signin" method="POST" action="/entry/">  
+		<form class="form-signin" method="POST" action="/entry">  
 		{% csrf_token %}  
 			<h2 class="form-signin-heading">Login</h2>
 			<input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" /><br/>

@@ -1,1 +1,22 @@
-frontend.css
+.book-design 
+{
+  padding: 20px;
+  width: 600px;
+  margin: 20px auto;
+ -webkit-box-shadow: -6px 10px 26px 12px rgba(0,0,0,0.75);
+-moz-box-shadow: -6px 10px 26px 12px rgba(0,0,0,0.75);
+box-shadow: -6px 10px 26px 12px rgba(0,0,0,0.75);
+      background-color: white;
+}
+
+.book-form
+{
+	background-image: url("../images/dance.jpg");
+	background-repeat: no-repeat;
+}
+
+h3
+{
+	color: white;
+	text-align: center;
+}

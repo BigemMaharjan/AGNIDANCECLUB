@@ -1,0 +1,49 @@
+{% load static %}
+<body>
+	{% include 'frontend/userheader.html' %}
+	{% block content %}
+	<section class="book_form">
+		<div class="container">
+			<h2>User Booking</h2>
+			<div>
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %} 
+					<div class="book-design">
+						<label>Student Name</label>
+						<input type="text" name="student_name" placeholder="Student Name" autofocus=""/><br>
+
+						<label>Class Types</label>
+						<div class="dropdown">
+							<select class="form-control" name="class_types">
+								<option value="Tap Dance">Tap Dance</option>
+								<option value="Jazz Dance">Jazz Dance</option>
+								<option value="Contemporary Dance">Comtemporary Dance</option>
+								<option value="HipHop Dance">Dance</option>
+								<option value="Dance">HipHop Dance</option>
+								<option value="Lyrical Dance">Lyrical Dance</option>
+								<option value="Modern Dance">Modern Dance</option>
+							</select>
+						</div><br>
+
+						<label>Shift</label>
+						<div class="dropdown">
+							<select class="form-control" name="class_shift">
+								<option value="Morning">Morning</option>
+            					<option value="Afternoon">Afternoon</option>
+            					<option value="Evening">Evening</option>
+							</select>
+						</div>
+
+						<label>Booking Date</label>
+						<input type="date" name="booking_date" />
+
+						<button class="btn btn-lg btn-primary btn-block" type="submit" name="userbooking">Book</button>
+					</div>
+				</form>
+			</div>
+		</div>	
+	</section>
+	{% endblock %}
+
+</body>
+	{% include'frontend/userfooter.html' %}
