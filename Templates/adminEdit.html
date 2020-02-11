@@ -1,14 +1,14 @@
-{% include 'backend/adminheader' %}
-<form method="post" action="/adminUpdate/{{admin.admin_id}}" enctype="multipart/form-data">
+{% include 'backend/adminheader.html' %}
+<form method="POST" action="/adminUpdate/{{admin.admin_id}}" enctype="multipart/form-data">
 	{% csrf_token %}
-	<input type="text" value="{{admin.name}}" name="name">
-	<input type="text" value="{{admin.email}}" name="email">
-	<input type="text" value="{{admin.password}}" name="password">
-	<input type="dropdown" value="{{admin.gender}}" name="gender">
+	<input type="text" class="form-control" value="{{admin.name}}" name="name"> <br>
+	<input type="text" class="form-control" value="{{admin.email}}" name="email"> <br>
+	<input type="text" class="form-control" value="{{admin.password}}" name="password"> <br>
+	<input type="dropdown" class="form-control" value="{{admin.gender}}" name="gender"> <br>
 {% load static %}
-	<img width="100" src="{%static '/lib/Images/'%}{{admin.image}}"/>
-	<input type="file" name="image">
-	<button type="submit">Update</button>
+	<img width="100" src="{%static '/lib/Images/'%}{{admin.image}}"/> <br>
+	<input type="file" class="form-control" name="image"> <br>
+	<button type="submit" class="btn btn-lg btn-primary btn-block" name="create">Update</button>
 </form>
 
-{% include 'backed/adminfooter' %}
+{% include 'backend/adminfooter.html' %}

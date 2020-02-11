@@ -1,12 +1,12 @@
 {% load static %}
 
-<form method="POST" action="/create/" enctype="multipart/form-data">
+<form method="POST" action="/create/" enctype="multipart/form-data" class="form-control">
 {% csrf_token %}
-<p>Create new Admin profile</p> <br>
+<h2 class="form-signin-heading">Create Admin Profile</h2>
 name:{{structure.name}}
 email:{{structure.email}}
 password:{{structure.password}}
 gender:{{structure.gender}}
 image:{{structure.image}} 
-<button type="submit" class="btn btn-danger" name="create">Submit</button>
+<button type="submit" class="btn btn-danger">Submit</button>
 </form>

@@ -19,9 +19,9 @@ class Lock:
 	def valid_admin(function):
 		def wrap(request):
 			try:
-				Admin.objects.get(Q(email=request.session['email']) & Q(password=request.session['password']))
+				Admin.objects.get(Q(name=request.session['name']) & Q(password=request.session['password']))
 				return function (request)
 			except:
-				messages.warning(request,"Invalid password or email")
+				messages.warning(request,"Invalid password or name")
 				return redirect('adminlogin')
 		return wrap

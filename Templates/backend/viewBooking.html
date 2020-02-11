@@ -10,6 +10,7 @@
 						<a href="{% url 'admindashboard' %}" class="btn btn-primary">Back</a>
 					</div>
 					<h3>Booking Detail</h3> <br>
+					<div class="col-md-6">
 					<table class="table table-responsive table-striped table-bordered">
 									<tr>
 											<th>Booking ID</th>
@@ -17,7 +18,6 @@
 											<th>Class Types</th>
 											<th>Class Shift</th>
 											<th>Booking Date</th>
-											<!-- <th>User ID</th> -->
 									</tr>
 
 									{% for bookclass in bookclasses %}
@@ -27,10 +27,10 @@
 											<td>{{bookclass.class_types}}</td>
 											<td>{{bookclass.class_shift}}</td>
 											<td>{{bookclass.booking_date}}</td>
-											<!-- <td>{{}}</td> -->
 									</tr>
 									{% endfor %}
 					</table>
+					</div>
 				</div>
 			</div>
 		</section>

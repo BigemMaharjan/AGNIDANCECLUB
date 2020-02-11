@@ -30,6 +30,14 @@ class Book(models.Model):
 	class_types=models.CharField(max_length=100)
 	class_shift=models.CharField(max_length=100)
 	booking_date=models.CharField(max_length=100)
-	user_id=models.ForeignKey(User,on_delete=models.CASCADE)
 	class Meta:
 		db_table="bookclass"
+
+class Event(models.Model):
+	event_id=models.AutoField(auto_created=True,primary_key=True)
+	event_name=models.CharField(max_length=100)
+	event_description=models.CharField(max_length=100)
+	event_date=models.CharField(max_length=100, default="")
+	admin_name=models.CharField(max_length=100)
+	class Meta:
+		db_table="event"

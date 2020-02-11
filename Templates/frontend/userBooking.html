@@ -6,11 +6,11 @@
 		<div class="container">
 			<h2>User Booking</h2>
 			<div>
-				<form method="POST" enctype="multipart/form-data">
+				<form method="POST" enctype="multipart/form-data" action="/userBooking/">
 					{% csrf_token %} 
 					<div class="book-design">
 						<label>Student Name</label>
-						<input type="text" name="student_name" placeholder="Student Name" autofocus=""/><br>
+						<input type="text" class="form-control" name="student_name" placeholder="Student Name" value="{{request.session.username}}" autofocus=""/><br>
 
 						<label>Class Types</label>
 						<div class="dropdown">
@@ -32,12 +32,12 @@
             					<option value="Afternoon">Afternoon</option>
             					<option value="Evening">Evening</option>
 							</select>
-						</div>
+						</div> <br>
 
 						<label>Booking Date</label>
-						<input type="date" name="booking_date" />
+						<input type="date" name="booking_date" /> <br> <br>
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit" name="userbooking">Book</button>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Book</button>
 					</div>
 				</form>
 			</div>
@@ -46,4 +46,4 @@
 	{% endblock %}
 
 </body>
-	{% include'frontend/userfooter.html' %}
+	{% include 'frontend/userfooter.html' %}

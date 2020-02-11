@@ -10,8 +10,11 @@
 						<a href="{% url 'admindashboard' %}" class="btn btn-primary">Back</a>
 					</div>
 					<h3>Admin Detail</h3> <br>
+						<input type="text" id="adminsearch" class="form-control col-md-4" placeholder="Search by name...."/> <br>
+
+						<a href="{% url 'create' %}" class="btn btn-primary" >add</a> <br> <br>
+
 					<table class="table table-responsive table-striped table-bordered">
-							<a href="{% url 'create' %}" class="btn btn-primary" >add</a> <br>
 									<tr>
 											<th>ID</th>
 											<th>Name</th>
@@ -29,7 +32,7 @@
 											<td>{{admin.email}}</td>
 											<td>{{admin.password}}</td>
 											<td>{{admin.gender}}</td>
-											<td><img width="40" src="{%static '/lib/Images/'%}{{admin.image}}"/></td>
+											<td><img width="40" height="40" src="{%static '/lib/Images/'%}{{admin.image}}"/></td>
 											<td><a href="/adminEdit/{{admin.admin_id}}">Edit</a>|<a href="/adminDelete/{{admin.admin_id}}">Delete</a></td>
 									</tr>
 									{% endfor %}
@@ -37,6 +40,48 @@
 				</div>
 			</div>
 		</section>
+
+		<form method="post" action="/index/">
+		{% csrf_token %}
+		<button type="submit" name="prev" value="prev" id="prev">prev</button>
+		<input style="width:40px;" type="number" value="{{pages}}" name="pages" id="pages">
+		<button type="submit" name="next" value="next" id="next">next</button>		
+		</form>
+
+		<script>
+		$(document).ready(()=>{
+			$("#adminsearch").keyup(()=>{
+				$.ajax({
+					data:{search:$("#adminsearch").val()},
+					url:'/adminsearch',
+					method:'GET',
+					success:function(data){
+						console.log(data);
+						$("tr").not("tr:first").remove();
+						
+						for(d of data) {
+							var html="";
+							html+="<tr>";
+								html+="<td>"+d.admin_id+"</td>";
+								html+="<td>"+d.name+"</td>";
+								html+="<td>"+d.gender+"</td>";
+								html+="<td>"+d.email+"</td>";
+								html+="<td>"+d.password+"</td>";
+								html+="<td>"+d.image+"</td>";
+								html+="<td><a href='/adminEdit/"+d.admin_id+"'>Edit</a> | <a href='/adminDelete/"+d.admin_id+"'>Delete</a></td>";
+							html+="</tr>"
+
+							$("table").append(html);
+						}
+					},error:function(error){
+						console.log(error)
+					},complete:function(){
+						console.log('complete')
+					}
+				})
+			})
+		})
+	</script>
 
 		{% endblock %}
 	</body>
