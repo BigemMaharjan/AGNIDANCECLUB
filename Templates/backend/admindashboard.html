@@ -15,19 +15,27 @@
             <a href="{% url 'userDetail' %}">View User Detail</a>
           </div>
         </div>
+      </div>
+        <div class="row">
         <div class="col-md-6">
           <div class="button">
             <a href="{% url 'addevent' %}">Add Event</a>
           </div>
         </div>
-      </div>
+        <div class="col-md-6">
+          <div class="button">
+          <a href="{% url 'viewBooking' %}">View Booking</a>
+        </div>
+        </div>
+        </div>
       <div class="row">
         <div class="col-md-6">
-          <a href="{% url 'viewBooking' %}">View Booking</a>
+          <div class="button">
+          <a href="{% url 'sets' %}">Set time and Date for New Class</a>
+        </div>
         </div>
       </div>
       </div>
-    </div>
   </section>
   {% endblock %}
 </body>

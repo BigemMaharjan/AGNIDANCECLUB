@@ -1,0 +1,23 @@
+{% load static %}
+<body>
+	{% include 'backend/adminheader.html' %}
+	{% block content %}
+	<div class="col-md-12">
+					<div class="class_form"> <br>
+						<form class="form-signin" method="POST" action="/eventUpdate/{{event.event_id}}" enctype="multipart/form-data">
+							{% csrf_token %}
+							<h2 class="form-signin-heading">Edit Event Register</h2>
+							<input type="text" class="form-control" name="event_name" placeholder="Event Name" value="{{event.event_name}}" autofocus="" /><br/>
+							<div class="form-group">
+								<textarea class="form-control" rows="5" name="event_description" placeholder="Event Description" value="{{event.event_description}}"></textarea>
+							</div>
+							<input type="date" class="form-control" name="event_date" placeholder="Event Date" value="{{event.event_date}}" autofocus="" /><br/>
+							<input type="text" class="form-control" name="admin_name" placeholder="Event Name" value="{{request.session.name}}" autofocus="" /><br/>
+
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+						</form> <br>
+					</div>
+				</div>
+	{% endblock %}
+</body>
+{% include 'backend/adminfooter.html' %}

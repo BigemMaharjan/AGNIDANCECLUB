@@ -1,0 +1,45 @@
+{% load static %}
+<body>
+	{% include 'backend/adminheader.html' %}
+	{% block content %}
+		<div class="col-md-4">
+				<div class="class_form">
+					<form method="POST" class="form-signin" enctype="multipart/form-data" action="/setUpdate/{{sets.set_id}}">
+						{% csrf_token %} 
+						<h2 class="form-signin-heading">Edit Time and Date</h2>
+						<label>Class Types</label>
+						<div class="dropdown">
+							<select class="form-control" name="class_types" value="{{sets.class_types}}" required="">
+								<option value="Tap Dance">Tap Dance</option>
+								<option value="Jazz Dance">Jazz Dance</option>
+								<option value="Contemporary Dance">Comtemporary Dance</option>
+								<option value="Ballet Dance">Ballet Dance</option>
+								<option value="HipHop Dance">HipHop Dance</option>
+								<option value="Lyrical Dance">Lyrical Dance</option>
+								<option value="Modern Dance">Modern Dance</option>
+							</select>
+						</div><br>
+
+						<label>Shift</label>
+						<div class="dropdown">
+							<select class="form-control" name="class_shift" value="{{sets.class_shift}}" required="">
+								<option value="Morning">Morning</option>
+								<option value="Afternoon">Afternoon</option>
+								<option value="Evening">Evening</option>
+							</select>
+						</div> <br>
+
+						<label>Time</label>
+						<input type="time" class="form_control" name="time" value="{{sets.time}}" required="" /> <br> <br>
+
+						<label>Date</label>
+						<input type="date" class="form-control" name="date" value="{{sets.date}}" required="" /> <br> <br>
+
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+					</form>
+				</div>
+			</div>
+
+	{% endblock %}
+</body>
+{% include 'backend/adminfooter.html' %}

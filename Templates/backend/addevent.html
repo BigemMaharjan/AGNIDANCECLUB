@@ -14,8 +14,9 @@
 							<div class="form-group">
 								<textarea class="form-control" rows="5" name="event_description" placeholder="Event Description"></textarea>
 							</div>
-							<input type="date" class="form-control" name="event_date" placeholder="Event Name" required="" autofocus="" /><br/>
-							<input type="text" class="form-control" name="name" placeholder="Event Name" value="{{request.session.name}}" autofocus="" /><br/>
+							<input type="date" class="form-control" name="event_date" placeholder="Event Date" required="" autofocus="" /><br/>
+							<input type="text" class="form-control" name="admin_name" placeholder="Event Name" value="{{request.session.name}}" autofocus="" /><br/>
+
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Add Event</button>
 						</form>
 					</div>
@@ -23,7 +24,7 @@
 				<div class="col-md-6">
 					<div class="well">
 						<div class="thumbnail">
-							<a href="/adminDashboard">Back</a>
+							<a href="{% url 'admindashboard' %}" class="btn btn-primary">Back</a>
 						</div>
 						<H3> Event Detail</H3>
 						<table class="table table-responsive table-striped table-bordered">
@@ -38,10 +39,11 @@
 								</tr>
 								{% for event in events %}
 								<tr>
+									<th>{{event.event_id}}</th>
 									<td>{{event.event_name}}</td>
 									<td>{{event.event_description}}</td>
 									<td>{{event.event_date}}</td>
-									<td>{{admin.name}}</td>
+									<td>{{event.admin_name}}</td>
 									<td><a href="/eventEdit/{{event.event_id}}">Edit</a>|<a href="/eventDelete/{{event.event_id}}">Delete</a></td>
 							</tr>
 							{% endfor %}

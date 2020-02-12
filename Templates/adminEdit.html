@@ -1,14 +1,17 @@
 {% include 'backend/adminheader.html' %}
-<form method="POST" action="/adminUpdate/{{admin.admin_id}}" enctype="multipart/form-data">
+<div class="wrapper">
+<form class="form-signin" method="POST" action="/adminUpdate/{{admin.admin_id}}" enctype="multipart/form-data">
 	{% csrf_token %}
-	<input type="text" class="form-control" value="{{admin.name}}" name="name"> <br>
-	<input type="text" class="form-control" value="{{admin.email}}" name="email"> <br>
-	<input type="text" class="form-control" value="{{admin.password}}" name="password"> <br>
-	<input type="dropdown" class="form-control" value="{{admin.gender}}" name="gender"> <br>
+	<h2>Edit Admin Profile</h2>
+	<input type="text" class="form-control" value="{{admin.name}}" name="name" required=""> <br>
+	<input type="text" class="form-control" value="{{admin.email}}" name="email" required=""> <br>
+	<input type="text" class="form-control" value="{{admin.password}}" name="password" required=""> <br>
+	<input type="dropdown" class="form-control" value="{{admin.gender}}" name="gender" required=""> <br>
 {% load static %}
 	<img width="100" src="{%static '/lib/Images/'%}{{admin.image}}"/> <br>
 	<input type="file" class="form-control" name="image"> <br>
 	<button type="submit" class="btn btn-lg btn-primary btn-block" name="create">Update</button>
 </form>
+</div>
 
 {% include 'backend/adminfooter.html' %}

@@ -2,19 +2,17 @@
 <body>
 	{% include 'frontend/userheader.html' %}
 	{% block content %}
-	<section class="book_form">
-		<div class="container-fluid">
-			<div class="col-md-12">
-				<form method="POST" class="form-signin" enctype="multipart/form-data" action="/userBooking/">
-					<h2>User Booking</h2>
+	<div class="col-md-12"> <br>
+				<form method="POST" class="form-signin" enctype="multipart/form-data" action="/bookUpdate/{{bookclass.booking_id}}">
+					<h2>Edit User Booking</h2>
 					{% csrf_token %} 
 					<div class="book-design">
 						<label>Student Name</label>
-						<input type="text" class="form-control" name="student_name" placeholder="Student Name" value="{{request.session.username}}" autofocus=""/ required=""><br>
+						<input type="text" class="form-control" name="student_name" placeholder="Student Name" value="{{request.session.username}}" autofocus="" required="" /><br>
 
 						<label>Class Types</label>
 						<div class="dropdown">
-							<select class="form-control" name="class_types" required="">
+							<select class="form-control" name="class_types" value="{{bookclass.class_types}}">
 								<option value="Tap Dance">Tap Dance</option>
 								<option value="Jazz Dance">Jazz Dance</option>
 								<option value="Contemporary Dance">Comtemporary Dance</option>
@@ -27,7 +25,7 @@
 
 						<label>Shift</label>
 						<div class="dropdown">
-							<select class="form-control" name="class_shift" required="">
+							<select class="form-control" name="class_shift" value="{{bookclass.class_shift}}" required="">
 								<option value="Morning">Morning</option>
             					<option value="Afternoon">Afternoon</option>
             					<option value="Evening">Evening</option>
@@ -35,17 +33,12 @@
 						</div> <br>
 
 						<label>Booking Date</label>
-						<input type="date" name="booking_date" required="" /> <br> <br>
+						<input type="date" name="booking_date" value="{{bookclass.booking_date}}" required="" /> <br> <br>
 
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Book</button>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
 					</div>
-				</form>
+				</form> <br>
 			</div>
-		</div>	
-	</section>
-
-
 	{% endblock %}
-
 </body>
-	{% include 'frontend/userfooter.html' %}
+{% include 'frontend/userfooter.html' %}

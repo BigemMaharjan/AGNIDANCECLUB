@@ -1,0 +1,37 @@
+{% load static %}
+<body>
+	{% include 'frontend/userheader.html' %}
+	{% block content %}
+	<div class="col-md-6">
+		<div class="well">
+			<div class="thumbnail"> <br>
+				<a href="{% url 'userdashboard' %}" class="btn btn-primary">Back</a>
+			</div>
+			<H3>Booking Detail</H3>
+			<table class="table table-responsive table-striped table-bordered">
+				<tr>
+					<th>Booking ID</th>
+					<th>Student Name</th>
+					<th>Class Types</th>
+					<th>Class Shift</th>
+					<th>Booking Date</th>
+					<th>Action</th>
+				</tr>
+
+				{% for bookclass in bookclasses %}
+				<tr>
+					<td>{{bookclass.booking_id}}</td>
+					<td>{{bookclass.student_name}}</td>
+					<td>{{bookclass.class_types}}</td>
+					<td>{{bookclass.class_shift}}</td>
+					<td>{{bookclass.booking_date}}</td>
+					<td><a href="/bookEdit/{{bookclass.booking_id}}">Edit</a>|<a href="/bookDelete/{{bookclass.booking_id}}">Delete</a></td>
+
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+{% include 'frontend/userfooter.html' %}

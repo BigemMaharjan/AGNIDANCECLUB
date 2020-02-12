@@ -189,16 +189,15 @@ p
   @media screen and (max-width: 580px)
     display: block
   }
-
-/*--------------------------------------------------------------
-# Profile / Dashboard
---------------------------------------------------------------*/
-.main_page{
+  
+.main_page
+{
  background-color: #cccccc;
  height: 500px;
  background-repeat: none;
 }
-.main_page a{
+.main_page a
+{
   display: inline-block;
   background: black;
   max-width: 400px;
@@ -209,11 +208,13 @@ p
   text-align: center;
   margin-top:50px;
 }
-.main_page a:hover{
+.main_page a:hover
+{
   background: white;
   color: black;
 }
-.profile-design {
+.profile-design 
+{
   padding: 20px;
   width: 600px;
   margin: 20px auto;
@@ -223,6 +224,8 @@ box-shadow: -6px 10px 26px 12px rgba(0,0,0,0.75);
    background-color: white;
    border-radius: 20px;
 }
-.profile-underline{
+.profile-underline
+{
   border-bottom:1px solid black;  
 }
+

@@ -5,10 +5,12 @@ from DanceClub.models.createmodel import User
 from DanceClub.models.createmodel import Admin
 from DanceClub.models.createmodel import Book
 from DanceClub.models.createmodel import Event
+from DanceClub.models.createmodel import Set
 from DanceClub.forms import Signupform
 from DanceClub.forms import Adminform
 from DanceClub.forms import Bookform
 from DanceClub.forms import Eventform
+from DanceClub.forms import Setform
 from DanceClub.authentication import Authenticate
 from DanceClub.authentication import Lock
 
@@ -102,13 +104,43 @@ def adminUpdate(request,id):
 	return redirect('admindashboard')
 
 def adminDelete(request,id):
-	Admin.objects.get(admin_id=id).image.delete()
-	admin=admin.objects.get(admin_id=id)
-	admin.delete()
+	admin=Admin.objects.get(admin_id=id).image.delete()
+	return redirect('admindashboard')
+# /*--------------------------------------------------------------
+# SET, CRUD
+# --------------------------------------------------------------*/
+def sets(request):
+	if request.method == "POST":
+		change=Setform(request.POST)
+		change.save()
+		return redirect('admindashboard')
+
+	change=Setform()
+	setss=Set.objects.all()
+	return render(request, 'backend/sets.html', {'change':change, 'setss':setss})
+
+def viewTimeDate(request):
+	setss=Set.objects.all()
+	return render(request, 'frontend/viewTimeDate.html', {'setss':setss})	
+
+def setEdit(request,id):
+	sets=Set.objects.get(set_id=id)
+	return render(request, 'setEdit.html', {'sets':sets})
+
+def setUpdate(request,id):
+	sets=Set.objects.get(set_id=id)
+	change=Setform(request.POST,instance=sets)
+	change.save()
 	return redirect('admindashboard')
 
+def setDelete(request,id):
+	sets=Set.objects.get(set_id=id)
+	sets.delete()
+	return redirect('admindashboard')
+
+
 # /*--------------------------------------------------------------
-# EVENT CRUD
+# EVENT, CRUD
 # --------------------------------------------------------------*/
 
 @Lock.valid_admin
@@ -119,7 +151,8 @@ def addevent(request):
 		return redirect('admindashboard')
 
 	program=Eventform()
-	return render(request, 'backend/addevent.html', {'program':program})
+	events=Event.objects.all()
+	return render(request, 'backend/addevent.html', {'program':program, 'events':events})
 
 def viewevent(request):
 	events=Event.objects.all()
@@ -155,8 +188,7 @@ def adminlogout(request):
 # --------------------------------------------------------------*/
 
 def indexview(request):
-	users=User.objects.all()
-	return render(request, 'index.html',{'users':users})
+	return render(request, 'index.html')
 
 def aboutview(request):
 	return render(request, 'about.html')
@@ -197,9 +229,30 @@ def userBooking(request):
 		return redirect('userdashboard')
 
 	reserve=Bookform()
-	return render(request, 'frontend/userBooking.html', {'reserve':reserve})
+	bookclasses=Book.objects.all()
+	return render(request, 'frontend/userBooking.html', {'reserve':reserve, 'bookclasses':bookclasses})
 
-# def book()
+def yourBooking(request):
+	bookclasses=Book.objects.all()
+	return render(request, 'frontend/yourBooking.html', {'bookclasses':bookclasses})
+
+# /*--------------------------------------------------------------
+# Booking CRUD
+# --------------------------------------------------------------*/
+def bookEdit(request,id):
+	bookclass=Book.objects.get(booking_id=id)
+	return render(request, 'bookEdit.html', {'bookclass': bookclass})
+
+def bookUpdate(request,id):
+	bookclass=Book.objects.get(booking_id=id)
+	reserve=Bookform(request.POST,instance=bookclass)
+	reserve.save()
+	return redirect('userdashboard')
+
+def bookDelete(request,id):
+	bookclass=Book.objects.get(booking_id=id)
+	bookclass.delete()
+	return redirect('userdashboard')
 
 # @Authenticate.valid_user
 def userprofileview(request, username="request.session.username"):

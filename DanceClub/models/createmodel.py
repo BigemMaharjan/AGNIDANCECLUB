@@ -41,3 +41,12 @@ class Event(models.Model):
 	admin_name=models.CharField(max_length=100)
 	class Meta:
 		db_table="event"
+
+class Set(models.Model):
+	set_id=models.AutoField(auto_created=True,primary_key=True)
+	class_types=models.CharField(max_length=100)
+	class_shift=models.CharField(max_length=100, default="")
+	time=models.CharField(max_length=100)
+	date=models.CharField(max_length=100)
+	class Meta:
+		db_table="sets"

@@ -3,6 +3,7 @@ from DanceClub.models.createmodel import User
 from DanceClub.models.createmodel import Admin
 from DanceClub.models.createmodel import Book
 from DanceClub.models.createmodel import Event
+from DanceClub.models.createmodel import Set
 
 
 class Signupform(forms.ModelForm):
@@ -24,4 +25,9 @@ class Bookform(forms.ModelForm):
 class Eventform(forms.ModelForm):
 	class Meta:
 		model=Event
+		fields="__all__"
+
+class Setform(forms.ModelForm):
+	class Meta:
+		model=Set
 		fields="__all__"
