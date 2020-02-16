@@ -59,21 +59,13 @@
   margin-top: 10px;
 }
 
-/*--------------------------------------------------------------
-# Scrolling-nav
---------------------------------------------------------------*/
+
 
 
 section {
   padding:  60px 0;
 }
-/*section.dance{
-  
-  background-image: url("lib/Images/background.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}*/
+
 .box-frame{
   padding:20px 20px;
   border-radius: 20px;

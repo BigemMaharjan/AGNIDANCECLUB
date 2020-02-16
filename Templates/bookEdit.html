@@ -1,12 +1,11 @@
 {% load static %}
 <body>
-	{% include 'frontend/userheader.html' %}
+	{% include 'user/userheader.html' %}
 	{% block content %}
-	<div class="col-md-12"> <br>
+	<div class="wrapper">
 				<form method="POST" class="form-signin" enctype="multipart/form-data" action="/bookUpdate/{{bookclass.booking_id}}">
 					<h2>Edit User Booking</h2>
 					{% csrf_token %} 
-					<div class="book-design">
 						<label>Student Name</label>
 						<input type="text" class="form-control" name="student_name" placeholder="Student Name" value="{{request.session.username}}" autofocus="" required="" /><br>
 
@@ -36,9 +35,8 @@
 						<input type="date" name="booking_date" value="{{bookclass.booking_date}}" required="" /> <br> <br>
 
 						<button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
-					</div>
-				</form> <br>
-			</div>
+				</form>
+		</div>
 	{% endblock %}
 </body>
-{% include 'frontend/userfooter.html' %}
+{% include 'user/userfooter.html' %}

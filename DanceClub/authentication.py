@@ -25,3 +25,5 @@ class Lock:
 				messages.warning(request,"Invalid password or name")
 				return redirect('adminlogin')
 		return wrap
+
+		

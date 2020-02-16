@@ -1,6 +1,6 @@
 {% load static %}
 <body>
-	{% include 'backend/adminheader.html' %}
+	{% include 'admin/adminheader.html' %}
 	{% block content %}
 
 	<section class="image">
@@ -33,14 +33,13 @@
 							<td>{{user.full_name}}</td>
 							<td>{{user.gaurdian_name}}</td>
 							<td>{{user.date_of_birth}}</td>
-							<td></td>
 							<td>{{user.gender}}</td>
 							<td>{{user.address}}</td>
 							<td>{{user.email}}</td>
 							<td>{{user.phone_no}}</td>
 							<td>{{user.username}}</td>
 							<td>{{user.password}}</td>
-							<td><a href="/adminEdit/{{admin.admin_id}}">Edit</a>|<a href="/adminDelete/{{admin.admin_id}}">Delete</a></td>
+							<td><a href="/edit/{{user.user_id}}">Edit</a>|<a href="/delete/{{user.user_id}}">Delete</a></td>
 						</tr>
 					{% endfor %}
 				</table>
@@ -73,7 +72,6 @@
 								html+="<td>"+d.full_name+"</td>";
 								html+="<td>"+d.gaurdian_name+"</td>";
 								html+="<td>"+d.date_of_birth+"</td>";
-								// html+="<td>"+d.
 								html+="<td>"+d.gender+"</td>";
 								html+="<td>"+d.address+"</td>";
 								html+="<td>"+d.email+"</td>";
@@ -97,4 +95,4 @@
 
 	{% endblock %}
 </body>
-{% include 'backend/adminfooter.html' %}
+{% include 'admin/adminfooter.html' %}

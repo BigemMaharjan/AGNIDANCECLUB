@@ -13,6 +13,7 @@ from DanceClub.forms import Eventform
 from DanceClub.forms import Setform
 from DanceClub.authentication import Authenticate
 from DanceClub.authentication import Lock
+from datetime import date
 
 # /*--------------------------------------------------------------
 # ADMIN
@@ -31,7 +32,7 @@ def adminIndexview(request):
 		admins=Admin.objects.raw("SELECT * FROM admin LIMIT 3 offset %s",[offset])
 	else:
 		admins=Admin.objects.raw("SELECT  * FROM admin LIMIT 3 offset 0")
-	return render(request, 'backend/adminIndex.html',{'admins':admins, 'pages':pages})
+	return render(request, 'admin/adminIndex.html',{'admins':admins, 'pages':pages})
 
 def adminsearch(request):
 	admins=Admin.objects.filter(name__contains=request.GET['adminsearch']).values()
@@ -58,16 +59,16 @@ def enter(request):
 # @Lock.valid_admin
 def adminprofileview(request, name="request.session.name"):
 	admin=Admin.objects.get(name=name)
-	return render(request, 'backend/adminprofile.html',{'admin':admin})
+	return render(request, 'admin/adminprofile.html',{'admin':admin})
 
 @Lock.valid_admin
 def admindashboardview(request):
-	return render(request, 'backend/admindashboard.html')
+	return render(request, 'admin/admindashboard.html')
 
 # @Lock.valid_admin
 def viewBooking(request):
 	bookclasses=Book.objects.all()
-	return render(request, 'backend/viewBooking.html', {'bookclasses':bookclasses})
+	return render(request, 'admin/viewBooking.html', {'bookclasses':bookclasses})
 
 @Lock.valid_admin
 def userdetailview(request):
@@ -83,7 +84,7 @@ def userdetailview(request):
 		users=User.objects.raw("SELECT * FROM user LIMIT 3 offset %s",[offset])
 	else:
 		users=User.objects.raw("SELECT  * FROM user LIMIT 3 offset 0")
-	return render(request, 'backend/userDetail.html',{'users':users, 'page':page})
+	return render(request, 'admin/userDetail.html',{'users':users, 'page':page})
 
 def search(request):
 	users=User.objects.filter(username__contains=request.GET['search']).values()
@@ -105,6 +106,8 @@ def adminUpdate(request,id):
 
 def adminDelete(request,id):
 	admin=Admin.objects.get(admin_id=id).image.delete()
+	admin=Admin.objects.get(admin_id=id)
+	admin.delete()
 	return redirect('admindashboard')
 # /*--------------------------------------------------------------
 # SET, CRUD
@@ -117,11 +120,11 @@ def sets(request):
 
 	change=Setform()
 	setss=Set.objects.all()
-	return render(request, 'backend/sets.html', {'change':change, 'setss':setss})
+	return render(request, 'admin/sets.html', {'change':change, 'setss':setss})
 
 def viewTimeDate(request):
 	setss=Set.objects.all()
-	return render(request, 'frontend/viewTimeDate.html', {'setss':setss})	
+	return render(request, 'user/viewTimeDate.html', {'setss':setss})	
 
 def setEdit(request,id):
 	sets=Set.objects.get(set_id=id)
@@ -152,11 +155,11 @@ def addevent(request):
 
 	program=Eventform()
 	events=Event.objects.all()
-	return render(request, 'backend/addevent.html', {'program':program, 'events':events})
+	return render(request, 'admin/addevent.html', {'program':program, 'events':events})
 
 def viewevent(request):
 	events=Event.objects.all()
-	return render(request, 'frontend/viewevent.html', {'events':events})
+	return render(request, 'user/viewevent.html', {'events':events})
 
 def eventEdit(request,id):
 	event=Event.objects.get(event_id=id)
@@ -219,7 +222,7 @@ def entry(request):
 
 @Authenticate.valid_user
 def userdashboardview(request):
-	return render(request, 'frontend/userdashboard.html')
+	return render(request, 'user/userdashboard.html')
 
 @Authenticate.valid_user
 def userBooking(request):
@@ -230,11 +233,11 @@ def userBooking(request):
 
 	reserve=Bookform()
 	bookclasses=Book.objects.all()
-	return render(request, 'frontend/userBooking.html', {'reserve':reserve, 'bookclasses':bookclasses})
+	return render(request, 'user/userBooking.html', {'reserve':reserve, 'bookclasses':bookclasses})
 
 def yourBooking(request):
 	bookclasses=Book.objects.all()
-	return render(request, 'frontend/yourBooking.html', {'bookclasses':bookclasses})
+	return render(request, 'user/yourBooking.html', {'bookclasses':bookclasses})
 
 # /*--------------------------------------------------------------
 # Booking CRUD
@@ -257,7 +260,7 @@ def bookDelete(request,id):
 # @Authenticate.valid_user
 def userprofileview(request, username="request.session.username"):
 	user=User.objects.get(username=username)
-	return render(request, 'frontend/userprofile.html',{'user':user})
+	return render(request, 'user/userprofile.html',{'user':user})
 
 # /*--------------------------------------------------------------
 # USER CRUD
@@ -286,5 +289,21 @@ def logout(request):
 	del request.session['username']
 	del request.session['password']
 	return redirect('login')
+
+
+# /*--------------------------------------------------------------
+# Age
+# --------------------------------------------------------------*/
+
+# def age(request, date_of_birth):
+# 	today = date.today()
+# 	try:
+# 		birthday=date_of_birth.replace(year=today.year)
+# 	except:
+# 		birthday=date_of_birth.replace(year=today.year, month=born.month+1, day=1)
+# 	if birthday > today:
+# 		return today.year - date_of_birth-1
+# 	else:
+# 		return today.year - date_of_birth.year
 
 

@@ -1,12 +1,27 @@
 {% load static %}
-
-<form method="POST" action="/create/" enctype="multipart/form-data" class="form-control">
+{% include 'admin/adminheader.html' %}
+<body>
+	{% block content %}
+<div class= "wrapper">
+<form method="POST" class="form-signin" action="/create/" enctype="multipart/form-data" class="form-control">
 {% csrf_token %}
 <h2 class="form-signin-heading">Create Admin Profile</h2>
-name:{{structure.name}}
-email:{{structure.email}}
-password:{{structure.password}}
-gender:{{structure.gender}}
+<input type="text" class="form-control" name="name" placeholder="Name" required="" autofocus="" /><br/>
+<input type="text" class="form-control" name="email" placeholder="Email" required=" "/><br/>
+<input type="text" class="form-control" name="password" placeholder="Password" required=" "/><br/>
+<div class="dropdown">
+				<select class="form-control" name="gender">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Others">Others</option>
+				</select>
+</div><br/>
+
 image:{{structure.image}} 
+<br> <br>
 <button type="submit" class="btn btn-danger">Submit</button>
 </form>
+</div>
+{% endblock %}
+</body>
+{% include 'admin/adminfooter.html' %}

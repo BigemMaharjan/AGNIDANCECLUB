@@ -1,0 +1,59 @@
+{% load static %}
+<html>
+ <link href="{%static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+    <link href="{%static 'lib/CSS/cookies.css' %}" rel="stylesheet">
+  <link href="{%static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{%static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{%static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{%static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <body>
+<script type="text/javascript">
+function SetCookie(c_name,value,expiredays)
+{
+var exdate=new Date()
+exdate.setDate(exdate.getDate()+expiredays)
+document.cookie=c_name+ "=" +escape(value)+";path=/"+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+}
+</script>
+
+
+  	<div id="cookieWarnBox">
+  		<div class="text">
+  			"This websites uses cookies to enhance your experience while using this website."
+  			<a target="_blank" href="http://www.cssscript.com/privacy-policy/">More Info</a>
+  			<span id="cookieWarnClose" onclick="cookieWarn.Close(30);"> Got It!</span>
+  		</div>
+  	</div>
+
+  	<script type="text/javascript">
+if( document.cookie.indexOf("eucookie") ===-1 ){
+$("#cookieWarnBox").show();
+}
+$("#cookieWarnClose").click(function () {
+SetCookie('eucookie','eucookie')
+$("#cookieWarnBox").remove();
+});
+</script>
+  	
+  </body>
+
+
+
+ <script src="{% static 'lib/jquery/jquery.min.js'%}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js'%}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'lib/easing/easing.min.js'%}"></script>
+  <script src="{% static 'lib/superfish/hoverIntent.js'%}"></script>
+  <script src="{% static 'lib/superfish/superfish.min.js'%}"></script>
+  <script src="{% static 'lib/wow/wow.min.js'%}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js'%}"></script>
+  <script src="{% static 'lib/touchSwipe/jquery.touchSwipe.min.js'%}"></script>
+</html>

@@ -1,6 +1,7 @@
 {% load static %}
 <body>
   {% include 'header.html' %}
+  {% include 'cookies.html' %}
   {% block content %}
 
 <section id="intro">
@@ -12,15 +13,31 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="carousel-item active">
-            <div class="carousel-background"><img src="{%static 'lib/Images/contemp.jpg'%}" alt=""></div>
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide.jpg'%}" alt=""></div>
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="%static 'lib/Images/balletsli.jpg'%}" alt=""></div>
+            <div class="carousel-background"><img src="{%static 'lib/Images/slides1.jpg'%}" alt=""></div>
           </div>
 
           <div class="carousel-item">
-            <div class="carousel-background"><img src="{%static 'lib/Images/HHop.jpg'%}" alt=""></div>
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide2.jpg'%}" alt=""></div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide3.jpg'%}" alt=""></div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide4.jpg'%}" alt=""></div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide5.jpg'%}" alt=""></div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="{%static 'lib/Images/slide6.jpg'%}" alt=""></div>
           </div>
 
         </div>
@@ -37,10 +54,9 @@
 
       </div>
     </div>
-
   </section><!-- #intro -->
 
-  <section id="featured-services" class="fsblue">
+<section id="featured-services" class="fsblue">
     <div class="container">
       <div class="section-header">
         <h3 class="section-title">About Us</h3>
